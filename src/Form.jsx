@@ -1,5 +1,4 @@
 import profile_picture from './assets/anonymous.webp'
-import React from 'react'
 
 export default function Form({setFriends}){
     
@@ -22,9 +21,6 @@ export default function Form({setFriends}){
             newFriend
         ])
     }
-    
-
-    
     
     return (
         <form className="border-2 w-80" onSubmit={handleSubmit}>

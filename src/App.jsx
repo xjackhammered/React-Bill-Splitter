@@ -11,6 +11,11 @@ import React from 'react'
 function App() { 
 
     const [friends, setFriends] = React.useState(data)
+    const [toggle, setToggle] = React.useState(false)
+
+    function toggleButton(){
+      setToggle(prev => !prev)
+    }
 
     const entryElements = friends.map((friend)=> {
       return (
@@ -25,7 +30,8 @@ function App() {
     return (
       <>
         {entryElements}
-        <Form setFriends={setFriends} />
+        <button onClick={toggleButton}>Add friends</button>
+        {toggle && <Form setFriends={setFriends} />}
       </>
     )
 
