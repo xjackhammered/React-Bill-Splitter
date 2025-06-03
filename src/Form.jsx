@@ -5,7 +5,7 @@ export default function Form({setFriends}){
     
     function handleSubmit(event) {
        
-        event.preventDefault()
+       event.preventDefault()
        const formData = new FormData(event.currentTarget)
        const name = formData.get("name")
        const image = formData.get("image")
