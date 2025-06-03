@@ -5,7 +5,7 @@ export default [
     {
         id:1,
         name: 'Clark',
-        image: {profile_picture},
+        image: profile_picture,
         balance: -7,
     },
 
@@ -13,7 +13,7 @@ export default [
     {
         id:2,
         name: 'Sarah',
-        image: {profile_picture},
+        image: profile_picture,
         balance: 20,
     },
 
@@ -21,7 +21,7 @@ export default [
     {
         id:3,
         name: 'Anthony',
-        image: {profile_picture},
+        image: profile_picture,
         balance: 0,
     },
 
