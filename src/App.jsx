@@ -4,22 +4,28 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import data from './data'
 import Friendlist from './Friendlist'
+import Form from './Form'
+import React from 'react'
 
 
-function App() {
+function App() { 
 
-    const entryElements = data.map((element)=> {
+    const [friends, setFriends] = React.useState(data)
+
+    const entryElements = friends.map((friend)=> {
       return (
-        <Friendlist 
-          key={element.id}
-          {...element}
-        />
+
+          <Friendlist 
+            key={friend.id}
+            {...friend}
+          />
       )
     })
 
     return (
       <>
         {entryElements}
+        <Form setFriends={setFriends} />
       </>
     )
 
