@@ -3,6 +3,7 @@ import CalculationForm from './CalculationForm'
 
 export default function Friendlist(props){
     
+    const [balance, setBalance] = React.useState(props.balance)
     const [toggle, setToggle] = React.useState(false)
 
     function toggleFunction(){
@@ -19,14 +20,14 @@ export default function Friendlist(props){
                         <button type="button" className="bg-neutral-600 w-15 h-10 ml-64 text-white" onClick={toggleFunction}>Add</button>
                     </li>
                      <div className="">
-                        {props.balance > 0 && <p className="text-green-600">{props.name} owes you {props.balance}</p>}
-                        {props.balance < 0 && <p className="text-red-500">You owe {props.name} {props.balance}</p>}
-                        {props.balance == 0 && <p className="text-gray-600">You don't owe each other anything</p>}
+                        {balance > 0 && <p className="text-green-600">{props.name} owes you {balance}</p>}
+                        {balance < 0 && <p className="text-red-500">You owe {props.name} {Math.abs(balance)}</p>}
+                        {balance == 0 && <p className="text-gray-600">You don't owe each other anything</p>}
                     </div>
                 </ul>
             </div>
 
-            {toggle && <CalculationForm friend={props}/>}
+            {toggle && <CalculationForm friend={props} setBalance={setBalance}/>}
         </>
     )
 

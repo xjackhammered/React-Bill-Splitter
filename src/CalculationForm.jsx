@@ -1,7 +1,26 @@
-export default function CalculationForm({ friend }) {
+export default function CalculationForm({ friend, setBalance }) {
+    
+    function handleBill(event){
+       
+       event.preventDefault()
+       const formData = new FormData(event.currentTarget)
+       const bill = Number(formData.get("bill"))
+       const yourexpense = Number(formData.get("yourexpense"))
+       const friendexpense = Number(formData.get("friendexpense"))
+       const payer = formData.get("payer")
+
+       if(payer === "you") {
+        setBalance(prev => prev + friendexpense)
+       }
+       else (
+        setBalance(prev => prev - yourexpense)
+       )
+       event.target.reset()
+    }
+    
     return (
         <>
-            <form method="POST" className="p-4 border mt-4 bg-white shadow-md w-2xl ml-150">
+            <form method="POST" onSubmit={handleBill} className="p-4 border mt-4 bg-white shadow-md w-2xl ml-150">
                 <h1 className="font-bold">SPLIT A BILL WITH {friend.name}</h1><br></br>
                 
                 <label className="block font-semibold mb-2">Bill value</label>
@@ -20,7 +39,7 @@ export default function CalculationForm({ friend }) {
                     <option value={friend.name}>{friend.name}</option>
                 </select><br></br>
                 <br></br>
-                <button className="ml-140">Split Bill</button>
+                <button type="submit" className="ml-140">Split Bill</button>
             </form>
         </>
     )
